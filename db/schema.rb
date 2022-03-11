@@ -16,10 +16,11 @@ ActiveRecord::Schema.define(version: 2022_03_10_084520) do
   enable_extension "plpgsql"
 
   create_table "todos", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.boolean "is_completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_todos_on_title", unique: true
   end
 
 end
